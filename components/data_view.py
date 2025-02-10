@@ -21,11 +21,15 @@ def show_data_view(df):
     tab1, tab2, tab3 = st.tabs(["支出一覧", "カテゴリ別分析", "月別推移"])
 
     with tab1:
+        # 金額を見やすく整形
+        display_df = filtered_df.copy()
+        display_df['金額'] = display_df['金額'].apply(lambda x: f"¥{x:,}")
+
         st.dataframe(
-            filtered_df.sort_values('日付', ascending=False),
+            display_df.sort_values('日付', ascending=False),
             use_container_width=True
         )
-        
+
         # 集計情報
         total_expense = filtered_df['金額'].sum()
         st.metric("期間中の総支出", f"¥{total_expense:,}")
@@ -38,8 +42,11 @@ def show_data_view(df):
         # カテゴリ別の集計表
         category_summary = filtered_df.groupby('カテゴリ')['金額'].agg(['sum', 'count']).reset_index()
         category_summary.columns = ['カテゴリ', '合計金額', '件数']
+        # 金額をカンマ区切りで表示
+        category_summary['合計金額'] = category_summary['合計金額'].apply(lambda x: f"¥{x:,}")
+
         st.dataframe(
-            category_summary.sort_values('合計金額', ascending=False),
+            category_summary.sort_values('件数', ascending=False),
             use_container_width=True
         )
 
