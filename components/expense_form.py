@@ -28,10 +28,9 @@ def show_expense_form():
         )
 
         # 金額入力（円単位）
-        amount = st.number_input(
+        amount_str = st.text_input(
             "金額（円）",
-            min_value=0,
-            step=1,
+            value="",
             key="expense_amount"
         )
 
@@ -45,15 +44,21 @@ def show_expense_form():
         submitted = st.form_submit_button("記録する")
 
         if submitted:
-            if amount > 0:
-                return {
-                    "日付": date,
-                    "カテゴリ": category,
-                    "金額": amount,
-                    "メモ": memo
-                }
-            else:
-                st.error("金額を入力してください。")
+            # 金額の検証
+            try:
+                amount = int(amount_str) if amount_str else 0
+                if amount > 0:
+                    return {
+                        "日付": date,
+                        "カテゴリ": category,
+                        "金額": amount,
+                        "メモ": memo
+                    }
+                else:
+                    st.error("金額を入力してください。")
+                    return None
+            except ValueError:
+                st.error("金額は整数で入力してください。")
                 return None
 
     return None
