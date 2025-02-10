@@ -1,0 +1,61 @@
+/* メインコンテナのスタイル */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* サイドバーのスタイル */
+.sidebar .sidebar-content {
+    padding: 2rem 1rem;
+}
+
+/* フォームのスタイル */
+.stForm {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* メトリクスのスタイル */
+.stMetric {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* タブのスタイル */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 4rem;
+}
+
+/* データフレームのスタイル */
+.dataframe {
+    font-size: 0.9rem;
+}
+
+/* グラフコンテナのスタイル */
+.plot-container {
+    margin-bottom: 2rem;
+}
+
+/* ボタンのスタイル */
+.stButton button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* 入力フィールドのスタイル */
+.stTextInput input, .stNumberInput input, .stDateInput input {
+    border-radius: 0.25rem;
+}
+
+/* セレクトボックスのスタイル */
+.stSelectbox select {
+    border-radius: 0.25rem;
+}
