@@ -27,33 +27,13 @@ def show_expense_form():
             key="expense_category"
         )
 
-        # 金額入力の説明
-        st.markdown("""
-        ##### 金額入力
-        - 入力は**千円単位**です（例：5千円なら「5」と入力）
-        """)
-
-        # 金額入力（千円単位）
-        col1, col2 = st.columns([3, 1])
-        with col1:
-            amount_thousands = st.number_input(
-                "金額（千円）",
-                min_value=0,
-                step=1,
-                key="expense_amount",
-                help="1 = 1,000円"
-            )
-
-        # 実際の金額を計算（円単位）
-        amount = amount_thousands * 1000
-
-        # 金額の確認表示
-        if amount > 0:
-            st.info(f"""
-            💰 入力内容の確認
-            - 入力値: {amount_thousands:,}（千円）
-            - 実際の金額: ¥{amount:,}（円）
-            """)
+        # 金額入力（円単位）
+        amount = st.number_input(
+            "金額（円）",
+            min_value=0,
+            step=1,
+            key="expense_amount"
+        )
 
         # メモ入力
         memo = st.text_area(
